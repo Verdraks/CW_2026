@@ -11,6 +11,7 @@ public class S_PlayerMovement : MonoBehaviour
     [Header("Input")]
     [SerializeField] private RSE_OnPlayerMove rse_OnPlayerMove;
     [SerializeField] private RSE_OnPlayerSprint rse_OnPlayerSprint;
+    [SerializeField] private RSE_OnPlayerJump rse_OnPlayerJump;
 
     [Header("Output")]
     [SerializeField] private RSO_PlayerGroundCheckValue rso_PlayerGroundCheckValue;
@@ -19,46 +20,54 @@ public class S_PlayerMovement : MonoBehaviour
 
     private bool isSprinting = false;
     private bool isGrounded = true;
-    private float speed = 0;
+    private float coyoteTimer = 0f;
+    private float jumpBufferTimer = 0f;
     private Vector2 moveInput = Vector2.zero;
 
     private void OnEnable()
     {
         rse_OnPlayerMove.Action += MoveInput;
         rse_OnPlayerSprint.Action += Sprint;
+        rse_OnPlayerJump.Action += Jump;
     }
     private void OnDisable()
     {
         rse_OnPlayerMove.Action -= MoveInput;
         rse_OnPlayerSprint.Action -= Sprint;
+        rse_OnPlayerJump.Action -= Jump;
     }
-    private void Update()
-    {
-        CheckGround();
-    }
+
     private void FixedUpdate()
     {
+        CheckGround();
         Move();
+        HandleJump();
     }
     private void Move()
     {
         Vector3 moveDir = transform.forward * moveInput.y + transform.right * moveInput.x;
         moveDir.Normalize();
 
-        if (isSprinting)
-        {
-            speed = playerValues.moveSpeed * playerValues.sprintMultiplier;
-        }
-        else
-        {
-            speed = playerValues.moveSpeed;
-        }
-        Debug.Log("Speed: " + speed);
-        Vector3 targetVelocity = moveDir * speed;
+        float targetSpeed = isSprinting ? playerValues.moveSpeed * playerValues.sprintMultiplier : playerValues.moveSpeed;
+
+        Vector3 targetVelocity = moveDir * targetSpeed;
         Vector3 currentVelocity = rb.linearVelocity;
 
-        Vector3 velocityChange = targetVelocity - new Vector3(currentVelocity.x, 0, currentVelocity.z);
-        rb.AddForce(velocityChange, ForceMode.VelocityChange);
+        Vector3 horizontalVelocity = new Vector3(currentVelocity.x, 0f, currentVelocity.z);
+        Vector3 velocityDifference = targetVelocity - horizontalVelocity;
+
+        float control = isGrounded ? 1f : playerValues.airControlMultiplier;
+        float accel = playerValues.acceleration * control;
+
+        velocityDifference = Vector3.ClampMagnitude(velocityDifference, accel * Time.fixedDeltaTime);
+
+        rb.AddForce(velocityDifference, ForceMode.VelocityChange);
+
+        // Friction quand aucun input
+        if (isGrounded && moveInput.magnitude < 0.1f)
+        {
+            rb.AddForce(-horizontalVelocity * playerValues.groundFriction * Time.fixedDeltaTime, ForceMode.VelocityChange);
+        }
     }
     private void MoveInput(Vector2 input)
     {
@@ -71,12 +80,38 @@ public class S_PlayerMovement : MonoBehaviour
         isSprinting = sprinting;
         rso_PlayerSprintValue.Set(isSprinting);
     }
+    private void Jump(bool jump)
+    {
+        if (jump) jumpBufferTimer = playerValues.jumpBufferTime;
+    }
+    private void HandleJump()
+    {
+        Debug.Log("IsGrounded: " + isGrounded + ", CoyoteTimer: " + coyoteTimer + ", JumpBufferTimer: " + jumpBufferTimer);
 
+        jumpBufferTimer -= Time.fixedDeltaTime;
+
+        if(jumpBufferTimer > 0f && coyoteTimer > 0f)
+        {
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+            rb.AddForce(Vector3.up * playerValues.jumpForce, ForceMode.Impulse);
+            jumpBufferTimer = 0f;
+            coyoteTimer = 0f;
+        }
+
+    }
     private void CheckGround()
     {
+        bool wasGrounded = isGrounded;
         isGrounded = Physics.Raycast(transform.position, Vector3.down, playerValues.groundCheckDistance, playerValues.groundLayer);
         Debug.DrawLine(transform.position, transform.position + Vector3.down * playerValues.groundCheckDistance, isGrounded ? Color.green : Color.red);
-        Debug.Log("Is Grounded: " + isGrounded);
+        if (isGrounded)
+        {
+            coyoteTimer = playerValues.coyoteTime;
+        }
+        else
+        {
+            coyoteTimer -= Time.deltaTime;
+        }
         rso_PlayerGroundCheckValue.Set(isGrounded);
     }
 }

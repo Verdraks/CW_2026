@@ -54,7 +54,7 @@ public class S_InputsManager : MonoBehaviour
     }
     private void OnJumpInput(InputAction.CallbackContext ctx)
     {
-        rse_OnPlayerJump.Call();
+        rse_OnPlayerJump.Call(ctx.ReadValueAsButton());
     }
     private void OnInteractInput(InputAction.CallbackContext ctx)
     {

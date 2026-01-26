@@ -14,16 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SSO_PlayerValue
   moveSpeed: 5
   sprintMultiplier: 1.5
+  acceleration: 12
+  airControlMultiplier: 0.4
+  groundFriction: 8
   mouseSensitivity: 0.5
   maxLookAngle: 80
-  normalFOV: 60
+  jumpForce: 6
+  coyoteTime: 0.15
+  jumpBufferTime: 0.15
+  walkFOV: 60
   sprintFOV: 75
   fovSmooth: 8
   headbobFrequency: 8
   headbobAmplitude: 0.05
+  headbobWalkingMultiplier: 1
   headbobSprintingMultiplier: 1.4
   headbobSmooth: 10
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  groundCheckDistance: 1.5
+  groundCheckDistance: 1.1
