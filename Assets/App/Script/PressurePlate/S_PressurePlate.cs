@@ -17,4 +17,12 @@ public class S_PressurePlate : MonoBehaviour
             rso_PressurePlateActivate.Set(true);
         }
     }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag(playerTag))
+        {
+            Debug.Log("Pressure Plate Desactivated");
+            rso_PressurePlateActivate.Set(false);
+        }
+    }
 }
