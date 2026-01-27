@@ -137,7 +137,6 @@ public sealed class PosterizeRendererFeature : ScriptableRendererFeature
             // For more information, refer to https://docs.unity3d.com/Manual/urp/post-processing/custom-post-processing-with-volume.html
             PosterizeVolumeComponent myVolume = VolumeManager.instance.stack?.GetComponent<PosterizeVolumeComponent>();
             if (myVolume != null)
-                // s_SharedPropertyBlock.SetFloat("_Intensity", myVolume.intensity.value);
                 s_SharedPropertyBlock.SetFloat(kLevelPropertyId, myVolume.level.value);
 
             // Draw to the current render target.

@@ -133,7 +133,7 @@ public sealed class DitheringShadowRendererFeature : ScriptableRendererFeature
             // Set the material properties based on the blended values of the custom volume.
             // For more information, refer to https://docs.unity3d.com/Manual/urp/post-processing/custom-post-processing-with-volume.html
             DitheringShadowVolumeComponent myVolume = VolumeManager.instance.stack?.GetComponent<DitheringShadowVolumeComponent>();
-            if (myVolume != null)
+            if (myVolume != null )
                 s_SharedPropertyBlock.SetFloat("_Intensity", myVolume.intensity.value);
 
             // Draw to the current render target.

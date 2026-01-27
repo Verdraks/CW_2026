@@ -13,9 +13,8 @@
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
             #include "Packages/com.unity.render-pipelines.core/Runtime/Utilities/Blit.hlsl"
 
-
-
-            float _Pixels = 10;
+            
+            float _Pixels = 256;
             
             half4 Frag(Varyings i) : SV_Target
             {

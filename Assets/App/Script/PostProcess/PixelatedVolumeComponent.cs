@@ -28,7 +28,7 @@ public sealed class PixelatedVolumeComponent : VolumeComponent, IPostProcessComp
     // You can override the value in a local or global volume. For more information, refer to https://docs.unity3d.com/Manual/urp/volumes-landing-page.html
     // To access the value in a script, refer to the VolumeManager API: https://docs.unity3d.com/Packages/com.unity.render-pipelines.core@latest/index.html?subfolder=/api/UnityEngine.Rendering.VolumeManager.html 
     [Tooltip("Enter the description for the property that is shown when hovered")]
-    public ClampedFloatParameter intensity = new ClampedFloatParameter(1f, 0f, 1f);
+    public ClampedFloatParameter intensity = new ClampedFloatParameter(0f, 0f, 1f);
     
     [Tooltip("Number of pixel draw in the screen")]
     public MinFloatParameter pixelCount = new MinFloatParameter(1f, 1f);

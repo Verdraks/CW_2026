@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84f35937e41f4ed0a6a184717795e1bc, type: 3}
   m_Name: PosterizeVolumeComponent
   m_EditorClassIdentifier: Assembly-CSharp::PosterizeVolumeComponent
-  active: 0
+  active: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   level:
     m_OverrideState: 1
     m_Value: 20
@@ -52,10 +52,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbc1459f85844598bb6d8b9a0f0894dc, type: 3}
   m_Name: SepiaVolumeComponent
   m_EditorClassIdentifier: Assembly-CSharp::SepiaVolumeComponent
-  active: 0
+  active: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 0.25
 --- !u!114 &3751781333986242981
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a2c93a1a6732284da14a5e033fa855e, type: 3}
   m_Name: DitheringShadowVolumeComponent
   m_EditorClassIdentifier: Assembly-CSharp::DitheringShadowVolumeComponent
-  active: 0
+  active: 1
   intensity:
     m_OverrideState: 1
     m_Value: 0
@@ -112,13 +112,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f3289b491dd76f41a5a17c77b24fd65, type: 3}
   m_Name: PixelatedVolumeComponent
   m_EditorClassIdentifier: Assembly-CSharp::PixelatedVolumeComponent
-  active: 0
+  active: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   pixelCount:
     m_OverrideState: 1
-    m_Value: 512
+    m_Value: 256
 --- !u!114 &6927278984812597491
 MonoBehaviour:
   m_ObjectHideFlags: 3
