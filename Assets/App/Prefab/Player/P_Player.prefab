@@ -330,6 +330,7 @@ GameObject:
   - component: {fileID: 1372503686674336836}
   - component: {fileID: 5835119439737752586}
   - component: {fileID: 5282136865175865}
+  - component: {fileID: 6661097059057882863}
   m_Layer: 0
   m_Name: P_Player
   m_TagString: Untagged
@@ -422,3 +423,20 @@ MonoBehaviour:
   rso_PlayerGroundCheckValue: {fileID: 11400000, guid: 714ec7d735af82940acaa5bb665667de, type: 2}
   rso_PlayerSprintValue: {fileID: 11400000, guid: 167b5d640bc1b564dad8976e67fd422a, type: 2}
   rso_PlayerMoveValue: {fileID: 11400000, guid: f1479e20fec2ebe45bdbd969dd1400f9, type: 2}
+--- !u!114 &6661097059057882863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9014167773182367574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d60cf92e154e4ca699552c4e0a66ee68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Interactor
+  m_InteractableLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_InteractDistance: 3
+  m_OnPlayerInteract: {fileID: 11400000, guid: 3bce7f0cc1fda414c94c1b703431d6b4, type: 2}
