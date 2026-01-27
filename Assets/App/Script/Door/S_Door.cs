@@ -33,10 +33,7 @@ public class S_Door : MonoBehaviour
         door.rotation = startPos.rotation;
         t = 0f;
     }
-    private void Start()
-    {
-        OpenDoor();
-    }
+
     private void Update()
     {
         float target = isOpen ? 1f : 0f;
