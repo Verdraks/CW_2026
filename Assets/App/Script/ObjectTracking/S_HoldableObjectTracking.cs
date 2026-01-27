@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class S_HoldableObjectTracking : MonoBehaviour, IObjectTracking, IInteractable
+public class S_HoldableObjectTracking : MonoBehaviour, IInteractable
 {
     
     [Header("References")]
@@ -11,7 +11,7 @@ public class S_HoldableObjectTracking : MonoBehaviour, IObjectTracking, IInterac
     private float m_HoldStartTime;
     private float m_TotalHoldDuration;
 
-    public void InitializeTracking()
+    private void Awake()
     {
         m_IsHolding = false;
         m_HoldStartTime = 0f;
@@ -28,14 +28,6 @@ public class S_HoldableObjectTracking : MonoBehaviour, IObjectTracking, IInterac
         m_PressDuration.Set(currentDuration);
     }
 
-    public void ResetTracking()
-    {
-        m_IsHolding = false;
-        m_HoldStartTime = 0f;
-        m_TotalHoldDuration = 0f;
-        m_PressDuration.Set(0f);
-        m_IsManipulated.Set(false);
-    }
 
     private void Update()
     {

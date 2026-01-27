@@ -29,6 +29,7 @@ public class S_InputsManager : MonoBehaviour
         player.Move.canceled += OnMoveInput;
         player.Jump.performed += OnJumpInput;
         player.Interact.performed += OnInteractInput;
+        player.Interact.canceled += OnInteractInput;
         player.Look.performed += OnLookInput;
         player.Look.canceled += OnLookInput;
         player.Sprint.performed += OnSprintInput;
@@ -58,7 +59,7 @@ public class S_InputsManager : MonoBehaviour
     }
     private void OnInteractInput(InputAction.CallbackContext ctx)
     {
-        rse_OnPlayerInteract.Call();
+        rse_OnPlayerInteract.Call(ctx.ReadValueAsButton());
     }
     private void OnLookInput(InputAction.CallbackContext ctx)
     {

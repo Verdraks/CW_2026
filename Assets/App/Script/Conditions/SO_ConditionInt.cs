@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.Serialization;
 
-[CreateAssetMenu(fileName = "SO_ConditionInt", menuName = "Conditions/ConditionInt")]
-public class SO_ConditionInt : ScriptableObject, ICondition
+[CreateAssetMenu(fileName = "SO_ConditionInt", menuName = "SSO/Conditions/ConditionInt")]
+public class SO_ConditionInt : ICondition
 {
     [Header(" Settings")]
     [SerializeField] private int m_ReferenceValue;
@@ -11,7 +11,7 @@ public class SO_ConditionInt : ScriptableObject, ICondition
     [Header("Reference")]
     [SerializeField] private RSO_Int m_ObservedValue;
 
-    public bool Evaluate()
+    public override bool Evaluate()
     {
         if (!m_ObservedValue) return false;
         

@@ -1,5 +1,7 @@
-﻿public interface ICondition
+﻿using UnityEngine;
+
+public abstract class ICondition : ScriptableObject
 {
-    bool Evaluate();
+    public abstract bool Evaluate();
 }
 

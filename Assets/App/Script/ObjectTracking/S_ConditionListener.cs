@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
-public class S_ObjectLister : MonoBehaviour
+public class S_ConditionListener : MonoBehaviour
 {
-    [Header("Settings")]
-    [SerializeField] private SSO_ConditionsGroup m_Conditions;
+    [Header("Float Conditions")]
+    [SerializeField] private List<ICondition> m_Conditions = new();
 
     [Header("Outputs")]
     [SerializeField] private RSE_BasicEvent m_ConditionsValidated;
@@ -31,10 +32,29 @@ public class S_ObjectLister : MonoBehaviour
             return;
         }
         
-        if (m_Conditions.EvaluateAll())
+        if (EvaluateAll())
         {
             TriggerValidation();
         }
+    }
+
+
+    private bool EvaluateAll()
+    {
+        foreach (var condition in m_Conditions)
+        {
+            if (!condition.Evaluate()) return false;
+        }
+        return true;
+    }
+
+    private bool EvaluateAny()
+    {
+        foreach (var condition in m_Conditions)
+        {
+            if (condition.Evaluate()) return true;
+        }
+        return false;
     }
 
     private void TriggerValidation()
