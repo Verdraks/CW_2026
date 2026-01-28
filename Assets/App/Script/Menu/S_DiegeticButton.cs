@@ -11,6 +11,9 @@ public class S_DiegeticButton : MonoBehaviour
     [SerializeField] MMF_Player clickFeedback;
     [SerializeField] MMF_Player releaseFeedback;
 
+    [Header("Parameter")]
+    [SerializeField] bool isEventTriggeredAfterRelease = true;
+
     bool isPressed = false;
 
     void Update()
@@ -41,7 +44,9 @@ public class S_DiegeticButton : MonoBehaviour
     void Press()
     {
         isPressed = true;
-        clickFeedback.PlayFeedbacks();
+        clickFeedback?.PlayFeedbacks();
+        if (!isEventTriggeredAfterRelease)
+            onClick?.Invoke();
     }
 
     void Release()
@@ -49,8 +54,9 @@ public class S_DiegeticButton : MonoBehaviour
         if (isPressed)
         {
             isPressed = false;
-            releaseFeedback.PlayFeedbacks();
-            onClick?.Invoke();
+            releaseFeedback?.PlayFeedbacks();
+            if (isEventTriggeredAfterRelease)
+                onClick?.Invoke();
         }
     }
 }

@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a755989c6733f46afdc111d1fc8c33, type: 3}
   m_Name: RSO_IsMachineDestroyed
   m_EditorClassIdentifier: Assembly-CSharp::RSO_Bool
+  value: 0
