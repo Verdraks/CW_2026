@@ -13,7 +13,6 @@ public class S_PressurePlate : MonoBehaviour
     {
         if (other.CompareTag(playerTag))
         {
-            Debug.Log("Pressure Plate Activated");
             rso_PressurePlateActivate.Set(true);
         }
     }
@@ -21,7 +20,6 @@ public class S_PressurePlate : MonoBehaviour
     {
         if (other.CompareTag(playerTag))
         {
-            Debug.Log("Pressure Plate Desactivated");
             rso_PressurePlateActivate.Set(false);
         }
     }
