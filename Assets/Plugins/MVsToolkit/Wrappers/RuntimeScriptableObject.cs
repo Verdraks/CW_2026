@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System;
 using UnityEngine;
 
@@ -5,7 +6,7 @@ namespace MVsToolkit.Wrappers
 {
     public class RuntimeScriptableObject<T> : ScriptableObject
     {
-        private T value = default(T);
+        [SerializeField,ReadOnly] private T value = default(T);
 
         public event Action<T> OnChanged;
 
@@ -13,6 +14,8 @@ namespace MVsToolkit.Wrappers
         {
             return value;
         }
+
+        [Button]
         public void Set(T value)
         {
             this.value = value;

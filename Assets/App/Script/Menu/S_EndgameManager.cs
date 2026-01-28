@@ -1,3 +1,4 @@
+using MoreMountains.Feedbacks;
 using System.Collections;
 using TMPro;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
@@ -10,6 +11,7 @@ public class S_EndgameManager : MonoBehaviour
     public Image fadeImage;
     public TMP_Text endText;
     public TMP_Text statText;
+    [SerializeField] MMF_Player textTypingFeedback;
 
     [Header("Data")]
     public RSO_Int betrayCount;
@@ -114,6 +116,7 @@ public class S_EndgameManager : MonoBehaviour
         foreach (char c in fullText)
         {
             endText.text += c;
+            textTypingFeedback?.PlayFeedbacks();
             yield return new WaitForSeconds(charDelay);
         }
     }
