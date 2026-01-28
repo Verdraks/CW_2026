@@ -5,6 +5,7 @@ using UnityEngine;
 public class S_Button : MonoBehaviour, IInteractable
 {
     [Header("References")]
+    [SerializeField] private GameObject m_OutlineInteractable;
     [SerializeField] private RSO_Float m_ClickCount;
     [SerializeField] private RSO_ClickHistory m_ClickHistory;
 
@@ -20,18 +21,19 @@ public class S_Button : MonoBehaviour, IInteractable
 
     private void Awake()
     {
-        m_ClickCount.Set(0);
-        if (m_ClickHistory != null)
-        {
-            m_ClickHistory.Setup();
-        }
+        m_ClickCount?.Set(0);
+        
+        m_ClickHistory?.Setup();
 
-        m_PressDuration.Set(0f);
-         m_IsManipulated.Set(false);
+        m_PressDuration?.Set(0f);
+        m_IsManipulated?.Set(false);
 
         m_IsHolding = false;
         m_HoldStartTime = 0f;
         m_TotalHoldDuration = 0f;
+        
+        
+        m_OutlineInteractable?.SetActive(false);
     }
 
     private void Update()
@@ -47,7 +49,17 @@ public class S_Button : MonoBehaviour, IInteractable
         float currentDuration = m_IsHolding 
             ? m_TotalHoldDuration + (Time.time - m_HoldStartTime) 
             : m_TotalHoldDuration;
-        if (m_PressDuration) m_PressDuration.Set(currentDuration);
+        if (m_PressDuration) m_PressDuration?.Set(currentDuration);
+    }
+
+    public void Hover()
+    {
+        m_OutlineInteractable?.SetActive(true);
+    }
+
+    public void Unhover()
+    {
+        m_OutlineInteractable?.SetActive(false);
     }
 
     public void Interact()
@@ -57,8 +69,8 @@ public class S_Button : MonoBehaviour, IInteractable
         m_IsManipulated.Set(true);
 
         m_ClickCountInternal++;
-        m_ClickCount.Set(m_ClickCountInternal);
-        m_ClickHistory.Get().Add(new ClickEvent(Time.time, false));
+        m_ClickCount?.Set(m_ClickCountInternal);
+        m_ClickHistory?.Get()?.Add(new ClickEvent(Time.time, false));
     }
 
     public void StopInteract()
@@ -69,8 +81,8 @@ public class S_Button : MonoBehaviour, IInteractable
             m_IsHolding = false;
             UpdateTracking();
         }
-        m_IsManipulated.Set(false);
+        m_IsManipulated?.Set(false);
 
-        m_ClickHistory.Get().Add(new ClickEvent(Time.time,true));
+        m_ClickHistory?.Get()?.Add(new ClickEvent(Time.time,true));
     }
 }

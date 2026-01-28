@@ -11,6 +11,8 @@ public class Interactor : MonoBehaviour
         
         private IInteractable m_CurrentInteractable;
         private bool m_IsInteracting;
+        // The interactable currently being hovered by the raycast (looked at)
+        private IInteractable m_HoveredInteractable;
         
         private void OnEnable()
         {
@@ -24,14 +26,38 @@ public class Interactor : MonoBehaviour
 
         private void Update()
         {
-                if (!m_IsInteracting || m_CurrentInteractable == null) return;
-                
-                // Check if player is still looking at the same interactable
-                if (!Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, m_InteractDistance, m_InteractableLayerMask) ||
-                    !hit.collider.TryGetComponent(out IInteractable interactable) ||
-                    interactable != m_CurrentInteractable)
+                // Raycast each frame to detect the interactable we're looking at
+                bool didHit = Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, m_InteractDistance, m_InteractableLayerMask);
+                if (didHit && hit.collider.TryGetComponent(out IInteractable interactable))
                 {
-                        StopInteraction();
+                        // Entered a new hover target
+                        if (interactable != m_HoveredInteractable)
+                        {
+                                if (m_HoveredInteractable != null)
+                                {
+                                        m_HoveredInteractable.Unhover();
+                                }
+                                m_HoveredInteractable = interactable;
+                                m_HoveredInteractable.Hover();
+                        }
+                }
+                else
+                {
+                        // No interactable hit: clear previous hover
+                        if (m_HoveredInteractable != null)
+                        {
+                                m_HoveredInteractable.Unhover();
+                                m_HoveredInteractable = null;
+                        }
+                }
+                
+                // If we're interacting, ensure we still look at the same interactable; otherwise stop interaction
+                if (m_IsInteracting && m_CurrentInteractable != null)
+                {
+                        if (!didHit || !hit.collider.TryGetComponent(out IInteractable hitInteractable) || hitInteractable != m_CurrentInteractable)
+                        {
+                                StopInteraction();
+                        }
                 }
         }
 
