@@ -86,7 +86,6 @@ public class S_PlayerMovement : MonoBehaviour
     }
     private void HandleJump()
     {
-        // Debug.Log("IsGrounded: " + isGrounded + ", CoyoteTimer: " + coyoteTimer + ", JumpBufferTimer: " + jumpBufferTimer);
 
         jumpBufferTimer -= Time.fixedDeltaTime;
 

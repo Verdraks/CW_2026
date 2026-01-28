@@ -79,7 +79,6 @@ public class S_PlayerCamera : MonoBehaviour
             speed = playerValues.headbobWalkingMultiplier;
         }
 
-        // Debug.Log("Headbob Speed Multiplier: " + speed);
         headbobTimer += Time.deltaTime * playerValues.headbobFrequency * speed;
 
         float headbobOffsetY = Mathf.Sin(headbobTimer) * playerValues.headbobAmplitude;
