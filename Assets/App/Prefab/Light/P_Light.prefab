@@ -172,8 +172,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68e8399d0a08174caedd8ad1fa27d5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::S_Light
-  successColor: {r: 0.12584685, g: 0.6415094, b: 0.06354574, a: 0}
-  failureColor: {r: 0.735849, g: 0.114542544, b: 0.114542544, a: 0}
   lightSource: {fileID: 8326171566529262568}
-  rso_LightSuccess: {fileID: 0}
-  rse_ChangeLightColor: {fileID: 0}
+  rse_ChangeLightColor: {fileID: 11400000, guid: 9a8408749cb0c6149a2bc103579ad9c7, type: 2}
