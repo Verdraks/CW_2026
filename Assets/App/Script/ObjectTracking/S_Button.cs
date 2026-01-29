@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class S_Button : MonoBehaviour, IInteractable
 {
+    [Header("Settings")]
+    [SerializeField] private string m_ButtonId;
     [Header("References")]
     [SerializeField] private GameObject m_OutlineInteractable;
     [SerializeField] private RSO_Float m_ClickCount;
@@ -12,7 +14,10 @@ public class S_Button : MonoBehaviour, IInteractable
     [Header("Hold References")]
     [SerializeField] private RSO_Float m_PressDuration;
     [SerializeField] private RSO_Bool m_IsManipulated;
-    
+
+    [Header("Outputs")]
+    [SerializeField] private RSE_OnButtonInteract rse_OnButtonInteract;
+
     private int m_ClickCountInternal;
 
     private bool m_IsHolding;
@@ -71,6 +76,7 @@ public class S_Button : MonoBehaviour, IInteractable
         m_ClickCountInternal++;
         m_ClickCount?.Set(m_ClickCountInternal);
         m_ClickHistory?.Get()?.Add(new ClickEvent(Time.time, false));
+        rse_OnButtonInteract?.Call(m_ButtonId);
     }
 
     public void StopInteract()
