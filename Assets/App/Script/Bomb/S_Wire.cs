@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class S_Wire : MonoBehaviour, IInteractable
 {
-    //[Header("Settings")]
+    [Header("Settings")]
+    [SerializeField] private GameObject m_OutlineInteractable;
     //[Header("References")]
     //[Header("Input")]
     [Header("Output")]
@@ -10,6 +11,7 @@ public class S_Wire : MonoBehaviour, IInteractable
 
     public void Hover()
     {
+        m_OutlineInteractable.SetActive(true);
     }
 
     public void Interact()
@@ -20,5 +22,6 @@ public class S_Wire : MonoBehaviour, IInteractable
 
     public void Unhover()
     {
+        m_OutlineInteractable.SetActive(false);
     }
 }
