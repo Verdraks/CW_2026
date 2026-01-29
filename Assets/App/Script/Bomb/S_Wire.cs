@@ -9,6 +9,11 @@ public class S_Wire : MonoBehaviour, IInteractable
     [Header("Output")]
     [SerializeField] private RSE_WireCut onWireCut;
 
+    private void Awake()
+    {
+        m_OutlineInteractable.SetActive(false);
+    }
+
     public void Hover()
     {
         m_OutlineInteractable.SetActive(true);

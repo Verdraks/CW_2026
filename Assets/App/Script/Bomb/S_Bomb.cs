@@ -68,12 +68,12 @@ public class S_Bomb : MonoBehaviour
 
     private void BombExplode()
     {
-        onBombExplode.Call();
+        onBombExplode?.Call();
     }
 
     private void BombDefused()
     {
-        onBombDefused.Call();
+        onBombDefused?.Call();
         StopBombTimer();
     }
     private void StartBombTimer()
