@@ -18,7 +18,7 @@ MonoBehaviour:
     m_Value: 1
   level:
     m_OverrideState: 1
-    m_Value: 25
+    m_Value: 38
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54,7 +54,7 @@ MonoBehaviour:
   active: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 0.1
+    m_Value: 0.157
 --- !u!114 &3751781333986242981
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66f335fb1ffd8684294ad653bf1c7564, type: 3}
   m_Name: ColorAdjustments
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.ColorAdjustments
-  active: 0
+  active: 1
   postExposure:
     m_OverrideState: 0
     m_Value: 0
@@ -82,7 +82,7 @@ MonoBehaviour:
     m_Value: 0
   saturation:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: -13
 --- !u!114 &4816169453975262593
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -143,7 +143,7 @@ MonoBehaviour:
     m_Value: 1
   pixelCount:
     m_OverrideState: 1
-    m_Value: 256
+    m_Value: 1024
 --- !u!114 &6927278984812597491
 MonoBehaviour:
   m_ObjectHideFlags: 3
