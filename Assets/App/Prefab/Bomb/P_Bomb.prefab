@@ -892,8 +892,8 @@ MonoBehaviour:
   - {fileID: 4604155966225325833}
   onWireCut: {fileID: 11400000, guid: f3213abd079ed5f4e8ee633f2f899a27, type: 2}
   onStartBombTimer: {fileID: 11400000, guid: 278758adf28b5fa4d88cca5acff0effc, type: 2}
-  onBombDefused: {fileID: 0}
-  onBombExplode: {fileID: 0}
+  onBombDefused: {fileID: 11400000, guid: 635ee9fd6135d924fa148ed96fe1b810, type: 2}
+  onBombExplode: {fileID: 11400000, guid: 1f49d8ae3a935294cb6919191bd3098d, type: 2}
   bombTimerTick: {fileID: 11400000, guid: 021082bc7e4b6854aa0405bb0512d28a, type: 2}
 --- !u!1 &7184273957505954401
 GameObject:

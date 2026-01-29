@@ -211,4 +211,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::S_PressurePlate
   playerTag: Player
-  rso_PressurePlateActivate: {fileID: 0}
+  rso_PressurePlateActivate: {fileID: 11400000, guid: b47dcc4da360ca9479c83451aa2ddbc8, type: 2}

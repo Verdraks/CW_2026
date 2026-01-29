@@ -217,8 +217,8 @@ MonoBehaviour:
   door: {fileID: 3719291747390914799}
   startPos: {fileID: 5444010477053384107}
   endPos: {fileID: 8955950475512108910}
-  rse_OpenDoor: {fileID: 0}
-  rse_CloseDoor: {fileID: 0}
+  rse_OpenDoor: {fileID: 11400000, guid: 6115cc94df4ccf040908933f7af2f302, type: 2}
+  rse_CloseDoor: {fileID: 11400000, guid: bc39245ccd500bf48b526e38adbf2c17, type: 2}
 --- !u!1 &9112034108419288708
 GameObject:
   m_ObjectHideFlags: 0
