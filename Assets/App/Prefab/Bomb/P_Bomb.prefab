@@ -894,6 +894,7 @@ MonoBehaviour:
   onStartBombTimer: {fileID: 11400000, guid: 278758adf28b5fa4d88cca5acff0effc, type: 2}
   onBombDefused: {fileID: 0}
   onBombExplode: {fileID: 0}
+  bombTimerTick: {fileID: 11400000, guid: 021082bc7e4b6854aa0405bb0512d28a, type: 2}
 --- !u!1 &7184273957505954401
 GameObject:
   m_ObjectHideFlags: 0

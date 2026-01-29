@@ -11,7 +11,9 @@ public class S_Timer : MonoBehaviour
     [SerializeField] private RSE_StopTimer stopTimer;
     [Header("Output")]
     [SerializeField] private RSE_BasicEvent timerFinished;
+    [SerializeField] private RSO_Float timerTick;
     private Coroutine timerCoroutine = null;
+    private float timer = 0f;
 
     private void OnEnable()
     {
@@ -25,6 +27,8 @@ public class S_Timer : MonoBehaviour
     }
     private void StartTimer()
     {
+        timer = timerDuration;
+        timerTick.Set(timer);
         if (timerCoroutine != null)
         {
             StopCoroutine(timerCoroutine);
@@ -42,7 +46,12 @@ public class S_Timer : MonoBehaviour
     }
     private IEnumerator TimerCoroutine(float duration)
     {
-        yield return new WaitForSeconds(duration);
+        while(timer != 0)
+        {
+            timer -= Time.deltaTime;
+            timerTick.Set(timer);
+            yield return null;
+        }
         timerFinished.Call();
     }
 }

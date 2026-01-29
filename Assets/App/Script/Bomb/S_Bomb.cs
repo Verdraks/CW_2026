@@ -18,10 +18,12 @@ public class S_Bomb : MonoBehaviour
     [Header("Output")]
     [SerializeField] private RSE_BasicEvent onBombDefused;
     [SerializeField] private RSE_BasicEvent onBombExplode;
+    [SerializeField] private RSO_Float bombTimerTick;
 
     private int wiresToCut = 0;
     private int wiresCut = 0;
     private Coroutine bombTimerCoroutine = null;
+    private float timer = 0f;
     private void OnEnable()
     {
         onWireCut.Action += VerifyCutWires;
@@ -78,6 +80,8 @@ public class S_Bomb : MonoBehaviour
     }
     private void StartBombTimer()
     {
+        timer = bombTimer;
+        bombTimerTick.Set(timer);
         if (bombTimerCoroutine != null)
         {
             StopCoroutine(bombTimerCoroutine);
@@ -95,7 +99,12 @@ public class S_Bomb : MonoBehaviour
     }
     IEnumerator StartBombTimer(float duration)
     {
-        yield return new WaitForSeconds(duration);
+        while (timer != 0)
+        {
+            timer -= Time.deltaTime;
+            bombTimerTick.Set(timer);
+            yield return null;
+        }
         BombExplode();
     }
 }

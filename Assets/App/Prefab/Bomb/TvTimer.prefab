@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3310949039966794765}
+  - component: {fileID: 1303319063698143838}
   m_Layer: 0
   m_Name: TvTimer
   m_TagString: Untagged
@@ -33,6 +34,20 @@ Transform:
   - {fileID: 2692051413457511438}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1303319063698143838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4318603801309643060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c3884f3da96bc648bb6392fe33a52b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_Timer
+  m_TimerText: {fileID: 8591528975777623464}
+  m_TimerValue: {fileID: 11400000, guid: 021082bc7e4b6854aa0405bb0512d28a, type: 2}
 --- !u!1 &6457371509310141450
 GameObject:
   m_ObjectHideFlags: 0
