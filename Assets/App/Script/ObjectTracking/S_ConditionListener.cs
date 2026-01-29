@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using MVsToolkit.Wrappers;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class S_ConditionListener : MonoBehaviour
@@ -7,7 +8,7 @@ public class S_ConditionListener : MonoBehaviour
     [SerializeField] private List<ICondition> m_Conditions = new();
 
     [Header("Outputs")]
-    [SerializeField] private RSE_BasicEvent m_ConditionsValidated;
+    [SerializeField] private RuntimeScriptableEvent m_ConditionsValidated;
     
     [SerializeField] private float m_RefreshInterval = 0.1f;
     

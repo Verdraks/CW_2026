@@ -66,7 +66,7 @@ public class S_Button : MonoBehaviour, IInteractable
     {
         m_IsHolding = true;
         m_HoldStartTime = Time.time;
-        m_IsManipulated.Set(true);
+        m_IsManipulated?.Set(true);
 
         m_ClickCountInternal++;
         m_ClickCount?.Set(m_ClickCountInternal);

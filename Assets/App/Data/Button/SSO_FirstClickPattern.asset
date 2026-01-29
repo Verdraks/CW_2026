@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ec2dc94a15144b4833dfa604e496370, type: 3}
+  m_Name: SSO_FirstClickPattern
+  m_EditorClassIdentifier: Assembly-CSharp::SSO_ConditionClickPattern
+  m_Pattern:
+  - Type: 0
+    ClickCount: 1
+    MaxTimeBetweenClicks: 0.3
+    MinTimeBetweenClicks: 0
+    MinPauseAfter: 0
+    MinHoldDuration: 0.5
+    MaxHoldDuration: 4
+    HoldExpectedDuration: 0
+    HoldDurationTolerance: 0
+  m_MaxPatternDuration: 5
+  m_ClickHistory: {fileID: 11400000, guid: c0c9bc1d20607c4419266164e7a3bfe3, type: 2}
+  m_Debug: 1
